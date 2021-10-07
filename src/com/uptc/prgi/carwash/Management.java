@@ -16,9 +16,14 @@ import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 public class Management {
     
     private Users user;
+    private Users[] users;
 
     public Management(Users user) {
         this.user = user;
+    }
+
+    public Management(Users[] users) {
+        this.users = users;
     }
     
     public boolean determinePromotion(){
