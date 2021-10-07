@@ -10,9 +10,10 @@ package com.uptc.prgi.carwash;
  * @author luism
  */
 public enum TypeVehicle {
-    PUBLIC("Público"), PARTICULAR("Particular");
+    PUBLIC("Público"), PARTICULAR("Particular"), PRIVATE("Privado");
     
     private final String typeVehicle;
+    
     
     private TypeVehicle(String typeVehicle){
         this.typeVehicle=typeVehicle;
