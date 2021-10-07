@@ -10,5 +10,15 @@ package com.uptc.prgi.carwash;
  * @author luism
  */
 public enum TypeVehicle {
+    PUBLIC("Público"), PARTICULAR("Particular");
     
+    private final String typeVehicle;
+    
+    private TypeVehicle(String typeVehicle){
+        this.typeVehicle=typeVehicle;
+    }
+    
+    public String getTypeVehicle(){
+        return this.typeVehicle;
+    }
 }
