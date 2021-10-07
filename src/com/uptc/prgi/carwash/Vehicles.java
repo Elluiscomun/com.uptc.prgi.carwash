@@ -12,5 +12,27 @@ package com.uptc.prgi.carwash;
  * @date 6/10/2021  
  */
 public class Vehicles {
+    
+    private String licensePlate;
+    private TypeVehicle typeVehicle;
+    private ServicePackage[] servicePackage;
 
+    public Vehicles(String licensePlate, TypeVehicle typeVehicle, ServicePackage[] servicePackage) {
+        this.licensePlate = licensePlate;
+        this.typeVehicle = typeVehicle;
+        this.servicePackage = servicePackage;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public TypeVehicle getTypeVehicle() {
+        return typeVehicle;
+    }
+
+    public ServicePackage[] getServicePackage() {
+        return servicePackage;
+    }
+    
 }
