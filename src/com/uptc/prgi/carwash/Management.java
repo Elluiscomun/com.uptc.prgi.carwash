@@ -14,7 +14,7 @@ package com.uptc.prgi.carwash;
 public class Management {
     
     public int determinePromotion(){
-        return 0;
+        return 1;
     }
     
     private boolean determineAirFresher(){
