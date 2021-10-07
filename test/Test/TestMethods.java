@@ -28,5 +28,11 @@ public class TestMethods {
         boolean t = management.determinePromotion();
         
         System.out.println("CASO #1:" + (management.determinePromotion()? "OK":"FALSE"));
+        
+        Management management1 = new Management(new Users("Niko Bellic", 
+                "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
+        int totalValue = management1.determineValueToPay();
+        
+        System.out.println("CASO #1B:" + (management1.determineValueToPay() == 20000? "OK":"FALSE"));
     }
 }
