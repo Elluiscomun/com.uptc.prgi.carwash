@@ -29,9 +29,19 @@ public class Management {
     private boolean determineAirFresher(){
         return true;
     }
-    
+    /**
+     * metodo que determina el valor total a pagar por los servicios con su descuento si fue el caso.
+     * @return valor total
+     */
     private int determineValueToPay(){
-        return 0;
+        int totalValue = 0;
+        for(int i =0; i < user.getVehicles().getServicePackage().length; i++){
+            totalValue += user.getVehicles().getServicePackage()[i].getPriceOfService();
+        }
+        if(determinePromotion()){
+          totalValue -= totalValue*0.10f;   
+        }
+        return totalValue;
     }
     
     private void sort(){
