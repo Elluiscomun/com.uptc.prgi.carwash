@@ -37,7 +37,7 @@ public class Management {
      * Tetermina si vehiculo es publico por lo tanto recibe ambientador de regalo
      * @return 
      */
-    private boolean determineAirFresher(){
+    public boolean determineAirFresher(){
         if(user.getVehicles().getTypeVehicle() == PUBLIC){
             return true;
         }
@@ -48,7 +48,7 @@ public class Management {
      * metodo que determina el valor total a pagar por los servicios con su descuento si fue el caso.
      * @return valor total
      */
-    private int determineValueToPay(){
+    public int determineValueToPay(){
         int totalValue = 0;
         for(int i =0; i < user.getVehicles().getServicePackage().length; i++){
             totalValue += user.getVehicles().getServicePackage()[i].getPriceOfService();
@@ -59,15 +59,15 @@ public class Management {
         return totalValue;
     }
     
-    private void sort(){
+    public void sort(){
     
     }
     
-    private Vehicles[] search(){
+    public Vehicles[] search(){
         return null;
     }
     
-    private SalesReport[] salesReport(){
+    public SalesReport[] salesReport(){
         return null;    
     }
 
