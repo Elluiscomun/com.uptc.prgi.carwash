@@ -12,5 +12,29 @@ package com.uptc.prgi.carwash;
  * @date 6/10/2021  
  */
 public class Management {
+    
+    public int determinePromotion(){
+        return 0;
+    }
+    
+    private boolean determineAirFresher(){
+        return false;
+    }
+    
+    private int determineValueToPay(){
+        return 0;
+    }
+    
+    private void sort(){
+    
+    }
+    
+    private Vehicles[] search(){
+        return null;
+    }
+    
+    private SalesReport[] salesReport(){
+        return null;    
+    }
 
 }

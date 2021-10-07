@@ -11,7 +11,6 @@ package com.uptc.prgi.carwash;
  * @author Luis Miguel Santiago 202023610
  * @date 6/10/2021  
  */
-public class Users {
-        private String name;
-        private long PhoneNumber;
+public class SalesReport {
+
 }
