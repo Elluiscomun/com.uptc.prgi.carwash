@@ -13,8 +13,17 @@ package com.uptc.prgi.carwash;
  */
 public class Management {
     
-    public int determinePromotion(){
-        return 0;
+    private Users user;
+
+    public Management(Users user) {
+        this.user = user;
+    }
+    
+    public boolean determinePromotion(){
+        if(user.getVehicles().getServicePackage().length==3){
+            return true;
+        }
+        return false;
     }
     
     private boolean determineAirFresher(){

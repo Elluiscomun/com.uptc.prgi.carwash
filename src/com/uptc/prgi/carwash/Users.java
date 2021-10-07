@@ -12,6 +12,26 @@ package com.uptc.prgi.carwash;
  * @date 6/10/2021  
  */
 public class Users {
-        private String name;
-        private long PhoneNumber;
+    private String name;
+    private String PhoneNumber;
+    private Vehicles vehicles;
+
+    public Users(String name, String PhoneNumber, Vehicles vehicles) {
+        this.name = name;
+        this.PhoneNumber = PhoneNumber;
+        this.vehicles = vehicles;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPhoneNumber() {
+        return PhoneNumber;
+    }
+
+    public Vehicles getVehicles() {
+        return vehicles;
+    }
+      
 }
