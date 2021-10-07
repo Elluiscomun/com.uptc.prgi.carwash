@@ -6,6 +6,8 @@
 
 package com.uptc.prgi.carwash;
 
+import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
+
 /**
  *
  * @author Luis Miguel Santiago 202023610
