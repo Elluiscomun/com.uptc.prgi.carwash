@@ -12,5 +12,8 @@ package com.uptc.prgi.carwash;
  * @date 6/10/2021  
  */
 public class SalesReport {
-
+        
+    private Sale[] sale;
+    
+    
 }
