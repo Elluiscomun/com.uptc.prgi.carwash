@@ -13,17 +13,13 @@ import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
  * @author Luis Miguel Santiago 202023610
  * @date 6/10/2021  
  */
-public class Management {
+public class Sale{
     
     private Users user;
-    private Users[] users;
+    private Date date;
 
     public Management(Users user) {
         this.user = user;
-    }
-
-    public Management(Users[] users) {
-        this.users = users;
     }
     
     public boolean determinePromotion(){
