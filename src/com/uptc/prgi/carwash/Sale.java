@@ -87,7 +87,14 @@ public class Sale{
         }
         return totalValue;
     }
-    
+    public boolean nameSearch(String nameSearch){
+        for (int i = 0; i < user.getName().length(); i++) {
+            if (user.getName().equals(nameSearch)) {
+               return true;
+            }
+        }   
+        return false;
+    }
     public Vehicles[] search(){
         return null;
     }
