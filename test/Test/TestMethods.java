@@ -22,12 +22,12 @@ import com.uptc.prgi.carwash.Vehicles;
 public class TestMethods {
     public static void main(String[] args){
         
-        Sale management = new Sale(new Users("Niko Bellic", 
+        Sale sale = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
         
-        boolean t = management.determinePromotion();
+        boolean t = sale.determinePromotion();
         
-        System.out.println("CASO #1:" + (management.determinePromotion()? "OK":"FALSE"));
+        System.out.println("CASO #1:" + (sale.determinePromotion()? "OK":"FALSE"));
         
         Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -61,11 +61,11 @@ public class TestMethods {
        
         
         
-        Sale management1 = new Sale(new Users("Niko Bellic", 
+        Sale salePrice = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
-        int totalValue = management1.determineValueToPay();
+        int totalValue = salePrice.determineValueToPay();
         
-        System.out.println("CASO #1B:" + (management1.determineValueToPay() == 20000? "OK":"FALSE"));
+        System.out.println("CASO #1B:" + (salePrice.determineValueToPay() == 20000? "OK":"FALSE"));
     }
 }
 
