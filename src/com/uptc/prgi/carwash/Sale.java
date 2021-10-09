@@ -5,6 +5,7 @@
  */
 
 package com.uptc.prgi.carwash;
+import java.util.Date;
 
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 
@@ -18,7 +19,7 @@ public class Sale{
     private Users user;
     private Date date;
 
-    public Management(Users user) {
+    public Sale(Users user) {
         this.user = user;
     }
     
