@@ -5,6 +5,7 @@
  */
 
 package com.uptc.prgi.carwash;
+import java.util.Date;
 
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import java.util.Date;
