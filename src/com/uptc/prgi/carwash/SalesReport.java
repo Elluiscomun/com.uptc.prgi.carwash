@@ -16,33 +16,8 @@ public class SalesReport<T> {
 
     private T[] datas;
     
-<<<<<<< HEAD
+
     public SalesReport(T[]datas){
-        this.datas = datas;
-    }
-    
-    public int count(ISalesReport<T> iSalesReport){
-        int count = 0;
-        for (int i = 0; i < datas.length; i++) {
-            if(iSalesReport.isInto(datas[i])){
-                count++;
-            }
-        }
-        return count;
-    }
-    
-    public SalesReport<T> search(ISalesReport<T> iSalesReport){
-        T[] result = (T[]) new Object[count(iSalesReport)];
-        int founds = 0;
-        for (int i = 0; i < datas.length; i++) {
-            if(iSalesReport.isInto(datas[i])){
-                result[founds] = datas[i];
-                founds++;
-            }
-        }
-        return new SalesReport<>(result);
-=======
-    public SalesReport(T[] datas) {
         this.datas = datas;
     }
     
@@ -69,7 +44,27 @@ public class SalesReport<T> {
             }
         }
         return result;
->>>>>>> e42dc43884cfde34c3fc40064bf4784519a7c54f
     }
     
+    public int count(ISalesReport<T> iSalesReport){
+        int count = 0;
+        for (int i = 0; i < datas.length; i++) {
+            if(iSalesReport.isInto(datas[i])){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public SalesReport<T> search(ISalesReport<T> iSalesReport){
+        T[] result = (T[]) new Object[count(iSalesReport)];
+        int founds = 0;
+        for (int i = 0; i < datas.length; i++) {
+            if(iSalesReport.isInto(datas[i])){
+                result[founds] = datas[i];
+                founds++;
+            }
+        }
+        return new SalesReport<>(result);
+    }
 }
