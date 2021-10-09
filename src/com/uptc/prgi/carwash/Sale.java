@@ -44,6 +44,14 @@ public class Sale{
     public int getValue() {
         return value;
     }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public Date getDate() {
+        return date;
+    }
     
     
     
@@ -87,5 +95,12 @@ public class Sale{
     public SalesReport[] salesReport(){
         return null;    
     }
+    
 
+    @Override
+    public String toString() {
+        return "Sale{" + "user=" + user + ", date=" + date + ", value=" + value + '}';
+    }
+    
+    
 }

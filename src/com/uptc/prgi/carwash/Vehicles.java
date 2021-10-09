@@ -34,5 +34,11 @@ public class Vehicles {
     public ServicePackage[] getServicePackage() {
         return servicePackage;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicles{" + "licensePlate=" + licensePlate + ", typeVehicle=" + typeVehicle + ", servicePackage=" + servicePackage + '}';
+    }
+    
     
 }

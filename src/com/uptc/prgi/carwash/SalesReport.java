@@ -70,15 +70,6 @@ public class SalesReport<T> {
         return count;
     }
     
-    public boolean isInTo(String[] licentPlace){
-        for(int i = 0; i > licentPlace.length-1; i++){
-            if(licentPlace[i] != licentPlace[i+1]){
-                return false;
-            }
-        }
-        return true;
-    }
-    
     public SalesReport<T> search(ISalesReport<T> iSalesReport){
         T[] result = (T[]) new Object[count(iSalesReport)];
         int founds = 0;
@@ -90,22 +81,18 @@ public class SalesReport<T> {
         }
         return new SalesReport<>(result);
     }
-    
-    
-    public ISalesReport<String> conditionByPlate(String licensePlate){
-        return new ISalesReport<String>(){
+   
+    public ISalesReport<Sale> conditionByLicensePlate(String value){
+        return new ISalesReport<Sale>(){
             @Override
-            public boolean isInto(String info) {
-                return info.equals(licensePlate);
+            public boolean isInto(Sale info) {
+                return value == info.getUser().getVehicles().getLicensePlate();
             }
         
         };
-        
     }
     
     public SalesReport searchByLicensePlate(String condition){
-        return  search((ISalesReport<T>) conditionByPlate(condition));
+        return  search((ISalesReport<T>) conditionByLicensePlate(condition));
     }
-    
-
 }
