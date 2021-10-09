@@ -15,5 +15,30 @@ public class SalesReport<T> {
         
     private T[] datas;
     
+    public SalesReport(T[]datas){
+        this.datas = datas;
+    }
+    
+    public int count(ISalesReport<T> iSalesReport){
+        int count = 0;
+        for (int i = 0; i < datas.length; i++) {
+            if(iSalesReport.isInto(datas[i])){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public SalesReport<T> search(ISalesReport<T> iSalesReport){
+        T[] result = (T[]) new Object[count(iSalesReport)];
+        int founds = 0;
+        for (int i = 0; i < datas.length; i++) {
+            if(iSalesReport.isInto(datas[i])){
+                result[founds] = datas[i];
+                founds++;
+            }
+        }
+        return new SalesReport<>(result);
+    }
     
 }
