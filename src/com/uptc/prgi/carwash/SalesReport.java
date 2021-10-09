@@ -96,7 +96,7 @@ public class SalesReport<T> {
         return new ISalesReport<String>(){
             @Override
             public boolean isInto(String info) {
-                return info.equals(licensePlate);
+                return info==(licensePlate);
             }
         
         };
