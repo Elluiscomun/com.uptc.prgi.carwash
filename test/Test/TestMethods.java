@@ -6,7 +6,8 @@
 
 package Test;
 
-import com.uptc.prgi.carwash.Management;
+
+import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.ServicePackage;
 import static com.uptc.prgi.carwash.ServicePackage.ENGINE_WASH;
 import static com.uptc.prgi.carwash.ServicePackage.EXTERIOR_WASH;
@@ -22,7 +23,7 @@ import com.uptc.prgi.carwash.Vehicles;
 public class TestMethods {
     public static void main(String[] args){
         
-        Management management = new Management(new Users("Niko Bellic", 
+        Sale sale = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
         
         boolean t = management.determinePromotion();

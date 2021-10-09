@@ -8,6 +8,12 @@ package com.uptc.prgi.carwash;
 import java.util.Date;
 
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -22,6 +28,14 @@ public class Sale{
 
     public Sale(Users user) {
         this.user = user;
+        this.date = Date.from(getDateNow().toInstant());
+    }
+    
+    public ZonedDateTime getDateNow(){
+        LocalDate localDate = LocalDate.now();
+        ZoneId systemTimeZone = ZoneId.systemDefault();
+        ZonedDateTime zonedDateTime = localDate.atStartOfDay(systemTimeZone);
+        return zonedDateTime;  
     }
     
     public boolean determinePromotion(){

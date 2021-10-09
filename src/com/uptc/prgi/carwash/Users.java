@@ -15,7 +15,6 @@ public class Users {
     private String name;
     private String PhoneNumber;
     private Vehicles vehicles;
-    private int sales;
 
     public Users(String name, String PhoneNumber, Vehicles vehicles) {
         this.name = name;
