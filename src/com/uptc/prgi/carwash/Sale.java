@@ -22,6 +22,14 @@ public class Sale{
 
     public Sale(Users user) {
         this.user = user;
+        this.date = Date.from(getDateNow().toInstant());
+    }
+    
+    public ZonedDateTime getDateNow(){
+        LocalDate localDate = LocalDate.now();
+        ZoneId systemTimeZone = ZoneId.systemDefault();
+        ZonedDateTime zonedDateTime = localDate.atStartOfDay(systemTimeZone);
+        return zonedDateTime;  
     }
     
     public boolean determinePromotion(){
