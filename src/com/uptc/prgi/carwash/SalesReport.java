@@ -11,6 +11,9 @@ package com.uptc.prgi.carwash;
  * @author Luis Miguel Santiago 202023610
  * @date 6/10/2021  
  */
-public class SalesReport {
-
+public class SalesReport<T> {
+        
+    private T[] datas;
+    
+    
 }

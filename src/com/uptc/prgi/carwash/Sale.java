@@ -5,25 +5,23 @@
  */
 
 package com.uptc.prgi.carwash;
+import java.util.Date;
 
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
+import java.util.Date;
 
 /**
  *
  * @author Luis Miguel Santiago 202023610
  * @date 6/10/2021  
  */
-public class Management {
+public class Sale{
     
     private Users user;
-    private Users[] users;
+    private Date date;
 
-    public Management(Users user) {
+    public Sale(Users user) {
         this.user = user;
-    }
-
-    public Management(Users[] users) {
-        this.users = users;
     }
     
     public boolean determinePromotion(){
@@ -37,7 +35,7 @@ public class Management {
      * Tetermina si vehiculo es publico por lo tanto recibe ambientador de regalo
      * @return 
      */
-    private boolean determineAirFresher(){
+    public boolean determineAirFresher(){
         if(user.getVehicles().getTypeVehicle() == PUBLIC){
             return true;
         }
@@ -48,7 +46,7 @@ public class Management {
      * metodo que determina el valor total a pagar por los servicios con su descuento si fue el caso.
      * @return valor total
      */
-    private int determineValueToPay(){
+    public int determineValueToPay(){
         int totalValue = 0;
         for(int i =0; i < user.getVehicles().getServicePackage().length; i++){
             totalValue += user.getVehicles().getServicePackage()[i].getPriceOfService();
@@ -59,15 +57,15 @@ public class Management {
         return totalValue;
     }
     
-    private void sort(){
+    public void sort(){
     
     }
     
-    private Vehicles[] search(){
+    public Vehicles[] search(){
         return null;
     }
     
-    private SalesReport[] salesReport(){
+    public SalesReport[] salesReport(){
         return null;    
     }
 
