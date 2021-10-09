@@ -6,6 +6,7 @@
 
 package Test;
 
+
 import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.SalesReport;
 import com.uptc.prgi.carwash.ServicePackage;
@@ -15,21 +16,13 @@ import static com.uptc.prgi.carwash.ServicePackage.INTERIOR_WASH;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
-
 /**
  *
- * @author Edwin Niño
+ * @author Luis Miguel Santiago 202023610
+ * @date 8/10/2021  
  */
-public class TestMethods {
+public class Test2 {
     public static void main(String[] args){
-        
-        Sale sale = new Sale(new Users("Niko Bellic", 
-                "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
-        
-        boolean t = sale.determinePromotion();
-        
-        System.out.println("CASO #1:" + (sale.determinePromotion()? "OK":"FALSE"));
-        
         Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
         
@@ -60,16 +53,7 @@ public class TestMethods {
         Sale sale10 = new Sale(new Users("Edwin Vargas", 
                 "3158963145", new Vehicles("MSX-409", PUBLIC, new ServicePackage[]{})));
        
-        //SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
-        
-        Sale salePrice = new Sale(new Users("Niko Bellic", 
-                "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
-        int totalValue = salePrice.determineValueToPay();
-        
-        System.out.println("CASO #1B:" + (salePrice.determineValueToPay() == 20000? "OK":"FALSE"));
-        
         SalesReport salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
-        System.out.println("CASO #1C:" + (salesReport2.searchByLicensePlate("BSH-104")));
+        
     }
 }
-
