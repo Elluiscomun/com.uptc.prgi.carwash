@@ -46,6 +46,20 @@ public class SalesReport<T> {
         return result;
     }
     
+    public void sortByValue(){
+        bubbleSort(comparatorByValue());
+    }
+    
+    public Comparator comparatorByValue(){
+        Comparator<Sale> comparator = new Comparator<Sale>() {
+            @Override
+            public int compare(Sale t1, Sale t2) {
+                return t1.getValue() - t2.getValue();
+            }
+        };
+        return comparator;
+    }
+    
     public int count(ISalesReport<T> iSalesReport){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
