@@ -6,6 +6,7 @@
 
 package Test;
 
+import com.uptc.prgi.carwash.ISalesReport;
 import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.SalesReport;
 import com.uptc.prgi.carwash.ServicePackage;
@@ -60,7 +61,7 @@ public class TestMethods {
         Sale sale10 = new Sale(new Users("Edwin Vargas", 
                 "3158963145", new Vehicles("MSX-409", PUBLIC, new ServicePackage[]{})));
        
-        
+        //SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
         
         Sale salePrice = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -68,8 +69,11 @@ public class TestMethods {
         
         System.out.println("CASO #1B:" + (salePrice.determineValueToPay() == 20000? "OK":"FALSE"));
         
+
         SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
         System.out.println("CASO #1C:" + (salesReport.searchByLicensePlate("BSH-104")));
+
+        
     }
 }
 

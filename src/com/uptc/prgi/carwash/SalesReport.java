@@ -17,7 +17,7 @@ public class SalesReport<T> {
     private T[] datas;
     
 
-    public SalesReport(T[]datas){
+    public SalesReport(T[] datas){
         this.datas = datas;
     }
     
@@ -70,9 +70,9 @@ public class SalesReport<T> {
         return count;
     }
     
-    public boolean isInTo(Sale[] sales){
-        for(int i = 0; i > sales.length-1; i++){
-            if(sales[i] != sales[i+1]){
+    public boolean isInTo(String[] licentPlace){
+        for(int i = 0; i > licentPlace.length-1; i++){
+            if(licentPlace[i] != licentPlace[i+1]){
                 return false;
             }
         }
@@ -96,7 +96,7 @@ public class SalesReport<T> {
         return new ISalesReport<String>(){
             @Override
             public boolean isInto(String info) {
-                return info==(licensePlate);
+                return info.equals(licensePlate);
             }
         
         };
