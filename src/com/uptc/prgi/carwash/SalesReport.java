@@ -70,6 +70,15 @@ public class SalesReport<T> {
         return count;
     }
     
+    public boolean isInTo(Sale[] sales){
+        for(int i = 0; i > sales.length-1; i++){
+            if(sales[i] != sales[i+1]){
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public SalesReport<T> search(ISalesReport<T> iSalesReport){
         T[] result = (T[]) new Object[count(iSalesReport)];
         int founds = 0;
@@ -80,6 +89,22 @@ public class SalesReport<T> {
             }
         }
         return new SalesReport<>(result);
+    }
+    
+    
+    public ISalesReport<String> conditionByPlate(String licensePlate){
+        return new ISalesReport<String>(){
+            @Override
+            public boolean isInto(String info) {
+                return info.equals(licensePlate);
+            }
+        
+        };
+        
+    }
+    
+    public SalesReport searchByLicensePlate(String condition){
+        return  search((ISalesReport<T>) conditionByPlate(condition));
     }
     
 
