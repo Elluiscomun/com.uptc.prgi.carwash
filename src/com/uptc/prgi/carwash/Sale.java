@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -25,10 +26,12 @@ public class Sale{
     
     private Users user;
     private Date date;
+    private int value;
 
     public Sale(Users user) {
         this.user = user;
         this.date = Date.from(getDateNow().toInstant());
+        this.value = determineValueToPay();
     }
     
     public ZonedDateTime getDateNow(){
@@ -37,6 +40,12 @@ public class Sale{
         ZonedDateTime zonedDateTime = localDate.atStartOfDay(systemTimeZone);
         return zonedDateTime;  
     }
+
+    public int getValue() {
+        return value;
+    }
+    
+    
     
     public boolean determinePromotion(){
         if(user.getVehicles().getServicePackage().length==3){
@@ -69,21 +78,6 @@ public class Sale{
           totalValue -= totalValue*0.10f;   
         }
         return totalValue;
-    }
-    
-    public Sale sortValueToPay(Comparator<T> comparator) {
-        Sale result = new Sale(user);
-        boolean change = true;
-        while (change) {
-            change = false;
-            for (int i = 0; i < sale.leng - 1; i++) {
-                if (comparator.compare(this.user[i].determineValueToPay, result.user[i + 1].determineValueToPay) > 0) {
-                    result.swap(i, i + 1);
-                    change = true;
-                }
-            }
-        }
-        return result;
     }
     
     public Vehicles[] search(){

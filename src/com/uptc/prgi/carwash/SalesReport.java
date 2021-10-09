@@ -67,4 +67,6 @@ public class SalesReport<T> {
         }
         return new SalesReport<>(result);
     }
+    
+
 }
