@@ -20,6 +20,10 @@ public class SalesReport<T> {
         this.datas = datas;
     }
     
+    public T[] getDatas() {
+        return datas;
+    }
+    
     private void swap(int i, int j){
         T aux = this.datas[j];
         this.datas[j]=this.datas[i];    
