@@ -7,7 +7,8 @@ package com.uptc.prgi.carwash;
 
 /**
  *
- * @author Edwin Niño
+ * @author luism
+ * @param <T>
  */
 public interface ISalesReport<T> {
     public boolean isInto(T info);

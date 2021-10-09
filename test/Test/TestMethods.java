@@ -6,7 +6,11 @@
 
 package Test;
 
+<<<<<<< HEAD
 import com.uptc.prgi.carwash.ISalesReport;
+=======
+
+>>>>>>> 301d8bb1990a204f0a4bca44cbb3ea8b4cdf1d8a
 import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.SalesReport;
 import com.uptc.prgi.carwash.ServicePackage;
@@ -16,6 +20,7 @@ import static com.uptc.prgi.carwash.ServicePackage.INTERIOR_WASH;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
+import java.util.Arrays;
 
 /**
  *
@@ -23,7 +28,7 @@ import com.uptc.prgi.carwash.Vehicles;
  */
 public class TestMethods {
     public static void main(String[] args){
-        
+
         Sale sale = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
         
@@ -70,10 +75,10 @@ public class TestMethods {
         System.out.println("CASO #1B:" + (salePrice.determineValueToPay() == 20000? "OK":"FALSE"));
         
 
-        SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
-        System.out.println("CASO #1C:" + (salesReport.searchByLicensePlate("BSH-104")));
 
+        SalesReport salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
         
+        System.out.println("CASO #1C:" + (Arrays.equals(salesReport2.searchByLicensePlate("KYC-86").getDatas(),(new Sale[]{sale8}))?" OK ":" FALSE "));
     }
 }
 

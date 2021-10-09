@@ -33,5 +33,12 @@ public class Users {
     public Vehicles getVehicles() {
         return vehicles;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" + "name=" + name + ", PhoneNumber=" + PhoneNumber + ", vehicles=" + vehicles + '}';
+    }
+    
+    
       
 }
