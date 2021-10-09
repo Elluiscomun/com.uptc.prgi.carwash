@@ -6,7 +6,7 @@
 
 package Test;
 
-import com.uptc.prgi.carwash.Management;
+import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.ServicePackage;
 import static com.uptc.prgi.carwash.ServicePackage.ENGINE_WASH;
 import static com.uptc.prgi.carwash.ServicePackage.EXTERIOR_WASH;
@@ -22,17 +22,17 @@ import com.uptc.prgi.carwash.Vehicles;
 public class TestMethods {
     public static void main(String[] args){
         
-        Management management = new Management(new Users("Niko Bellic", 
+        Sale sale = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
         
-        boolean t = management.determinePromotion();
+        boolean t = sale.determinePromotion();
         
-        System.out.println("CASO #1:" + (management.determinePromotion()? "OK":"FALSE"));
+        System.out.println("CASO #1:" + (sale.determinePromotion()? "OK":"FALSE"));
         
-        Management management1 = new Management(new Users("Niko Bellic", 
+        Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
-        int totalValue = management1.determineValueToPay();
+        int totalValue = sale1.determineValueToPay();
         
-        System.out.println("CASO #1B:" + (management1.determineValueToPay() == 20000? "OK":"FALSE"));
+        System.out.println("CASO #1B:" + (sale1.determineValueToPay() == 20000? "OK":"FALSE"));
     }
 }
