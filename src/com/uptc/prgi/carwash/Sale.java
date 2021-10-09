@@ -71,8 +71,19 @@ public class Sale{
         return totalValue;
     }
     
-    public void sort(){
-    
+    public Sale sortValueToPay(Comparator<T> comparator) {
+        Sale result = new Sale(user);
+        boolean change = true;
+        while (change) {
+            change = false;
+            for (int i = 0; i < sale.leng - 1; i++) {
+                if (comparator.compare(this.user[i].determineValueToPay, result.user[i + 1].determineValueToPay) > 0) {
+                    result.swap(i, i + 1);
+                    change = true;
+                }
+            }
+        }
+        return result;
     }
     
     public Vehicles[] search(){
