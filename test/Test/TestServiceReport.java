@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Test;
 
 import com.uptc.prgi.carwash.Sale;
@@ -15,20 +14,14 @@ import static com.uptc.prgi.carwash.ServicePackage.INTERIOR_WASH;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
-import java.util.Arrays;
 
 /**
  *
  * @author Edwin Niño
  */
-public class TestMethods {
-    public static void main(String[] args){
+public class TestServiceReport {
 
-        Sale sale = new Sale(new Users("Niko Bellic", 
-                "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
-        
-        
-        System.out.println("CASO #1:" + (sale.determinePromotion()? "OK":"FALSE"));
+    public void testsServiceReport(){
         
         Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -46,7 +39,7 @@ public class TestMethods {
                 "3134597958", new Vehicles("HIO-978", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
         
         Sale sale6 = new Sale(new Users("Danna Herandez", 
-                "3203767200", new Vehicles("OUH-666", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
+                "3203767200", new Vehicles("OUH-676", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
         
         Sale sale7 = new Sale(new Users("Miguel Castellanos", 
                 "3501268922", new Vehicles("WEE-086", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -59,24 +52,31 @@ public class TestMethods {
         
         Sale sale10 = new Sale(new Users("Edwin Vargas", 
                 "3158963145", new Vehicles("MSX-409", PUBLIC, new ServicePackage[]{ENGINE_WASH})));
-       
-        //SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
         
-        Sale salePrice = new Sale(new Users("Niko Bellic", 
-                "3203717234", new Vehicles("BHD-123", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
-        int totalValue = salePrice.determineValueToPay();
-        
-        System.out.println("CASO #1B:" + (salePrice.determineValueToPay() == 20000? "OK":"FALSE"));
-        
-
-
-        SalesReport salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
+        SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale6,sale7,sale8,sale9,sale10});
         
         
-        System.out.println("CASO #1C:" + (Arrays.equals(salesReport2.searchByLicensePlate("KYC-862").getDatas(),(new Sale[]{sale8}))?" OK ":" FALSE "));
+        System.out.println("CASOS DE PRUEBA: CANTIDAD DE SERVICIOS QUE SE HAN UTILIZADO");
+        System.out.println("PARA UNA CANTIDAD DE SOLO UN SERVICIO:");
+        System.out.println("CASO #1A:" + (salesReport.countServices(1)==4?" OK ":" ERROR "));
         
+        System.out.println();
         
+        System.out.println("PARA UNA CANTIDAD DE DOS SERVICIOS:");
+        System.out.println("CASO #1B:" + (salesReport.countServices(2)==3?" OK ":" ERROR "));
         
+        System.out.println();
+        
+        System.out.println("PARA UNA CANTIDAD DE TRES SERVICIOS:");
+        System.out.println("CASO #1C:" + (salesReport.countServices(3)==3?" OK ":" ERROR "));
+          
     }
+        
+        
+    public static void main(String[] args) {
+        
+        TestServiceReport testServiceReport = new TestServiceReport();
+        testServiceReport.testsServiceReport();
+    }
+    
 }
-
