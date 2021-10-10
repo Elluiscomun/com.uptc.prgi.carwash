@@ -5,16 +5,10 @@
  */
 
 package com.uptc.prgi.carwash;
-import java.util.Date;
-
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Comparator;
 import java.util.Date;
 
 /**
@@ -54,28 +48,30 @@ public class Sale{
     }
     
     
-    
+    /**
+     * Determinar si el usuario aplica a la promocion/descuento del valor total a pagar si adquiere 
+     * los tres servicios que ofrece el lavadero de autos "Car Wash"...
+     * @return boolean
+     */
     public boolean determinePromotion(){
-        if(user.getVehicles().getServicePackage().length==3){
-            return true;
-        }
-        return false;
+        return user.getVehicles().getServicePackage().length==3;
     }
     
-        /**
-     * Tetermina si vehiculo es publico por lo tanto recibe ambientador de regalo
+    
+    /**
+     * Determinar que si el vehiculo es de tipo PÚBLICO, por lo que si lo anterior resulta 
+     * ser verdadero el usuario aplica para recibir un ambientador de obsequio...
      * @return 
      */
     public boolean determineAirFresher(){
-        if(user.getVehicles().getTypeVehicle() == PUBLIC){
-            return true;
-        }
-        return false;
+        return user.getVehicles().getTypeVehicle() == PUBLIC;
     }
     
+    
     /**
-     * metodo que determina el valor total a pagar por los servicios con su descuento si fue el caso.
-     * @return valor total
+     * Determinar el valor total a pagar por los servicios que ha utilizado del lavadero de autos,
+     * ademas de realizar el respectivo descuento si el usuario aplica a él...
+     * @return int valor total a pagar...
      */
     public int determineValueToPay(){
         int totalValue = 0;
@@ -87,11 +83,11 @@ public class Sale{
         }
         return totalValue;
     }
-        
+      
+    
     @Override
     public String toString() {
         return "Sale{" + "user=" + user + ", date=" + date + ", value=" + value + '}';
     }
-    
     
 }
