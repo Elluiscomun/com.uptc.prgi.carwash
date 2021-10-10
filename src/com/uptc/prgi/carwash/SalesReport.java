@@ -5,7 +5,9 @@
  */
 
 package com.uptc.prgi.carwash;
+import java.text.SimpleDateFormat;
 import java.util.Comparator;
+import java.util.Date;
 
 /**
  *
@@ -70,6 +72,14 @@ public class SalesReport<T> {
         return count;
     }
     
+    public int countValue(IValue<T> iValue){
+        int count = 0;
+        for (int i = 0; i < datas.length; i++) {
+            count = iValue.isInto(datas[i]);
+        }
+        return count;
+    }
+    
     public SalesReport<T> search(ISalesReport<T> iSalesReport){
         T[] result = (T[]) new Object[count(iSalesReport)];
         int founds = 0;
@@ -92,7 +102,101 @@ public class SalesReport<T> {
         };
     }
     
+    public ISalesReport<Sale> conditionByDate(Date value){
+        return new ISalesReport<Sale>(){
+            @Override
+            public boolean isInto(Sale info) {
+                return value.getDay() == info.getDate().getDay() &&
+                        value.getMonth() == info.getDate().getMonth() &&
+                        value.getYear() == info.getDate().getYear();
+            }
+        
+        };
+    }
+    
+    public ISalesReport<Sale> conditionByMount(Date value){
+        return new ISalesReport<Sale>(){
+            @Override
+            public boolean isInto(Sale info) {
+                return value.getMonth() == info.getDate().getMonth() &&
+                        value.getYear() == info.getDate().getYear();
+            }
+        
+        };
+    }
+    
+    public ISalesReport<Sale> conditionByYear(Date value){
+        return new ISalesReport<Sale>(){
+            @Override
+            public boolean isInto(Sale info) {
+                return value.getYear() == info.getDate().getYear();
+            }
+        
+        };
+    }
+    
+    public ISalesReport<Sale> conditionByCountServices(int value){
+        return new ISalesReport<Sale>(){
+            @Override
+            public boolean isInto(Sale info) {
+                return value == info.getUser().getVehicles().getServicePackage().length;
+            }
+        
+        };
+    }
+    
+    public ISalesReport<Sale> conditionByCountAirFresher(){
+        return new ISalesReport<Sale>(){
+            @Override
+            public boolean isInto(Sale info) {
+                return info.determineAirFresher();
+            }
+        
+        };
+    }
+    
+    public IValue<Sale> contitionByValue(){
+        return new IValue<Sale>(){
+            @Override
+            public int isInto(Sale info) {
+                return info.getValue();
+            }
+        
+        };
+    }
+    
+    
+    
     public SalesReport searchByLicensePlate(String condition){
         return  search((ISalesReport<T>) conditionByLicensePlate(condition));
     }
+    
+    public int countServices(int condition){
+        return  count((ISalesReport<T>) conditionByCountServices(condition));
+    }
+    
+    public int countAirFresher(){
+        return  count((ISalesReport<T>) conditionByCountAirFresher());
+    }
+    
+
+    
+    
+    public SalesReport searchByDate(Date condition){
+        return  search((ISalesReport<T>) conditionByDate(condition));
+    }
+    
+    public String createSalesReport(ISalesReport iSalesReport){
+        SalesReport salesReport = search(iSalesReport);   
+        String stringDate = "REPORTE POR PERIODO DE TIEMPO DIGITADO :  " + "\n";
+        String stringByServices = "Cantidad de ventas con tres servicos : " + salesReport.countServices(3) + "\n" 
+                + "Cantidad de ventas con dos servicos : " + salesReport.countServices(2) + "\n"
+                + "Cantidad de ventas con un servico : " + salesReport.countServices(1) + "\n"
+                + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.conditionByCountAirFresher() + "\n";
+        String totalValue = "Total recaudado : " + salesReport.countValue(contitionByValue()); 
+        
+        return stringDate + stringByServices + totalValue;
+    }
+    
+   
 }
