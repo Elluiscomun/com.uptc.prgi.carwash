@@ -6,11 +6,6 @@
 
 package Test;
 
-<<<<<<< HEAD
-import com.uptc.prgi.carwash.ISalesReport;
-=======
-
->>>>>>> 301d8bb1990a204f0a4bca44cbb3ea8b4cdf1d8a
 import com.uptc.prgi.carwash.Sale;
 import com.uptc.prgi.carwash.SalesReport;
 import com.uptc.prgi.carwash.ServicePackage;
@@ -78,7 +73,10 @@ public class TestMethods {
 
         SalesReport salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale7,sale8,sale9,sale10});
         
-        System.out.println("CASO #1C:" + (Arrays.equals(salesReport2.searchByLicensePlate("KYC-86").getDatas(),(new Sale[]{sale8}))?" OK ":" FALSE "));
+        
+        System.out.println("CASO #1C:" + (Arrays.equals(salesReport2.searchByLicensePlate("KYC-862").getDatas(),(new Sale[]{sale8}))?" OK ":" FALSE "));
+        
+        
     }
 }
 
