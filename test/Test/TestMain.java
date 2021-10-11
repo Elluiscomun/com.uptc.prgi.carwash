@@ -209,7 +209,7 @@ public class TestMain {
                 System.out.println("SERVICIO " + (i+1) + "\nMarque 1 si el usuario va a adquirir "+ ServicePackage.ENGINE_WASH.getTypeOfService() 
                     + "\n Marque 2 Si el usuario va a adquirir "+ServicePackage.EXTERIOR_WASH.getTypeOfService() 
                     + "\n Marque 3 Si el usuario va a adquirir "+ServicePackage.INTERIOR_WASH.getTypeOfService());
-                servicePackage[i] = ServicePackage.values()[Integer.parseInt(console.nextLine())];
+                servicePackage[i] = ServicePackage.values()[Integer.parseInt(console.nextLine())-1];
             }
         }
         
