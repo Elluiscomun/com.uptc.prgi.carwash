@@ -6,9 +6,11 @@
 
 package com.uptc.prgi.carwash;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -24,14 +26,20 @@ public class Sale{
 
     public Sale(Users user) {
         this.user = user;
-        this.date = Date.from(getDateNow().toInstant());
+        this.date = Date.from(getDateNow().toInstant());//Al generar un constructor de esta clase rescatamos la fecha en la que se realiza la accion
         this.value = determineValueToPay();
     }
     
+    /**
+     * Genera archivo que  retorna la fecha en la que este metodo es llamado
+     * @return 
+     */
     public ZonedDateTime getDateNow(){
+        Date dateNow;
         LocalDate localDate = LocalDate.now();
         ZoneId systemTimeZone = ZoneId.systemDefault();
         ZonedDateTime zonedDateTime = localDate.atStartOfDay(systemTimeZone);
+       
         return zonedDateTime;  
     }
 

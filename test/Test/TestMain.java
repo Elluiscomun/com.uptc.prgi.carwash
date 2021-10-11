@@ -34,11 +34,11 @@ public class TestMain {
     private Sale sale;
     
     public TestMain(){
-        run();
+        run();//Siempre que se cree esta clase se ejecuta inicialmete el metodo run() que contiene nuestro menu
     }
     
     public void run() {
-        createTestData();
+        createTestData(); //para efectos de prueba ejecutamos un metodo que nos entrega dostos quemados
         int option = 0;
         do {
             String banner =    "____________________________________________________________________________\n" +
@@ -67,6 +67,7 @@ public class TestMain {
             String format1 = " __________________________________________________________________________ ";
             String format2 = "|__________________________________________________________________________|";
             
+
             console = new Scanner(System.in);
             try{
                 System.out.println(formatOption);
@@ -156,25 +157,30 @@ public class TestMain {
         System.out.println(formatOption);
         ServicePackage[] servicePakage = createServicePackageArray(Integer.parseInt(console.nextLine()));
 
-        Sale newSale = new Sale(new Users(name,number, new Vehicles(licencePlaque, tipeVehicle, servicePakage)));
-        createNewSalesReport(newSale);
+        Sale newSale = new Sale(new Users(name,number, new Vehicles(licencePlaque, tipeVehicle, servicePakage)));//creamos una nueva venta nos los datos digitamos manualmente
+        createNewSalesReport(newSale);//Añade la nueva venta al array principal...
         System.out.println(formatOption);
-        System.out.println("| El registro se ha realizado exitosamente...\n"
+        System.out.println("| EL REGISTRO SE HA REALIZADO EXITOSAMENTE...\n"
                 + "| Valor Total a Pagar: $" + newSale.getValue() 
                 + (newSale.determinePromotion()?"\n| Promocion/Descuento 10% Aplicada":"") 
                 + (newSale.determineAirFresher()?"\n| ¡Se obsequia un ambientador! ":""));
     }
     
-    
+    /**
+     * Creacion de arrays del enumerado ServicePackage
+     * @param numberlength
+     * @return 
+     */
     public ServicePackage[] createServicePackageArray(int numberlength){
         String formatOption = "____________________________________________________________________________";
         ServicePackage[] servicePackage = new ServicePackage[numberlength];
-        if(numberlength==3){
+        if(numberlength==3){ //si el usuario desea adquirir 3 servicios se retorna un array con todos nos servicios de la clase enum
             servicePackage = ServicePackage.values();
         }else{
-            for(int i = 0;i < servicePackage.length;i++){
+            for(int i = 0;i < servicePackage.length;i++){ //Mediante los numeros ingresados manualmente recuperamos la ubicacion de los datos del enum
+        
                 System.out.println(formatOption);
-                System.out.println("| SERVICIO " + (i+1) + "\n| 1. Digite si el usuario va a adquirir: "+ ServicePackage.INTERIOR_WASH.getTypeOfService() 
+                System.out.println("| SERVICIO " + "#"+ (i+1) + "\n| 1. Digite si el usuario va a adquirir: "+ ServicePackage.INTERIOR_WASH.getTypeOfService() 
                     + "\n| 2. Digite si el usuario va a adquirir: "+ServicePackage.EXTERIOR_WASH.getTypeOfService()
                     + "\n| 3. Digite si el usuario va a adquirir: "+ServicePackage.ENGINE_WASH.getTypeOfService());
                 System.out.println(formatOption);
@@ -184,15 +190,24 @@ public class TestMain {
         return servicePackage;
     }
     
-    
+    /**
+     * Nos permite visualizar los datos retornados
+     * @param sales 
+     */
     public void show(SalesReport sales){
         String formatOption = "____________________________________________________________________________";
         System.out.println(formatOption);
-        for(int i = 0; i < sales.getDatas().length; i++){
-            System.out.println(sales.getDatas()[i]);
-        }
-        System.out.println(formatOption);
-        System.out.println("| BÚSQUEDA FINALIZADA...");
+        if(sales.getDatas().length > 0){
+            for(int i = 0; i < sales.getDatas().length; i++){
+                System.out.println(sales.getDatas()[i]);
+            }
+            System.out.println(formatOption);
+            System.out.println("| BÚSQUEDA FINALIZADA..."); //Informa el cuando ya se presentaron por pantalla todos los resultados
+        }else{
+            System.out.println(formatOption);
+            System.out.println("| NO SE HAN ENCONTRADO RESULTADOS...");//Informa si el arreglo entregado esta vacio
+        }   
+        
     }
     
     
@@ -255,20 +270,26 @@ public class TestMain {
                     break;
             }    
     }
+   
     
- 
+    /**
+     * Metodo que añade una nueva venta al array principal
+     * @param sale 
+     */
     public void createNewSalesReport(Sale sale){
         int i = 0;
-        Sale[] sales = new Sale[salesReport2.getDatas().length+1];
+        Sale[] sales = new Sale[salesReport2.getDatas().length+1];//creamos un nuevo array con un espacion de más en comparacion con el array principal
         while(i < sales.length-1){
-            sales[i] = (Sale) salesReport2.getDatas()[i];
+            sales[i] = (Sale) salesReport2.getDatas()[i]; //le añadimos todos objetos del array principal
             i++;
         }
-        sales[i] = sale;
-        salesReport2 = new SalesReport(sales);
+        sales[i] = sale; // Y en el ultimo espacio añadimos la nueva venta creada
+        salesReport2 = new SalesReport(sales); //sabre escribimos el array principal para que contenga la nueva venta
     }
     
-    
+    /**
+     * Creamos datos quemados 
+     */
     public void createTestData() {
         Sale sale1 = new Sale(new Users("NIKO BELLIC", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -302,9 +323,10 @@ public class TestMain {
         
         salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale6,sale7,sale8,sale9,sale10});
     }
-   
+    
     
     public static void main(String[] args){
+        
         new TestMain();
     }
 }
