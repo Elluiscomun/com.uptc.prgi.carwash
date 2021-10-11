@@ -87,7 +87,7 @@ public class Sale{
     
     @Override
     public String toString() {
-        return "VENTA[" + "Usuario: " + user + "\n, Fecha=" + date + ", Valor=" + value + '}';
+        return "VENTA[" + "Usuario: " + user + "\n      Fecha -> " + date + ", Valor Total -> " + value;
     }
     
 }

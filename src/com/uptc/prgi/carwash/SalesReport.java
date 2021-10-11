@@ -228,13 +228,13 @@ public class SalesReport<T> {
     
     public String createSalesReport(ISalesReport iSalesReport){
         SalesReport salesReport = search(iSalesReport);   
-        String stringDate = "REPORTE POR PERIODO DE TIEMPO DIGITADO :  " + "\n";
-        String stringByServices = "Cantidad de ventas con tres servicos : " + salesReport.countServices(3) + "\n" 
-                + "Cantidad de ventas con dos servicos : " + salesReport.countServices(2) + "\n"
-                + "Cantidad de ventas con un servico : " + salesReport.countServices(1) + "\n"
-                + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.countAirFresher() + "\n";
-        String countTotal = "Total cantidad de ventas : "+ salesReport.getDatas().length +"\n";
-        String totalValue = "Total recaudado : " + salesReport.countValue(contitionByValue()); 
+        String stringDate = "| REPORTE GENERAL POR PERIODO DE ACUERDO TIEMPO INGRESADO:  " + "\n";
+        String stringByServices = "| Cantidad de ventas respecto a un servicio---> " + salesReport.countServices(1) + "\n"
+                + "| Cantidad de ventas respecto a dos servicios---> " + salesReport.countServices(2) + "\n" 
+                + "| Cantidad de ventas respecto a tres servicios---> " + salesReport.countServices(3) + "\n" 
+                + "| Cantidad de usuarios a los que se les obsequió un ambientador---> " + salesReport.countAirFresher() + "\n";
+        String countTotal = "| Total cantidad de ventas---> " + salesReport.getDatas().length +"\n";
+        String totalValue = "| Ingresos Totales---> " + salesReport.countValue(contitionByValue()); 
         
         return stringDate + stringByServices + countTotal + totalValue;
     }

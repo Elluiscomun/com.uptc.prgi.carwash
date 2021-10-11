@@ -48,7 +48,7 @@ public class TestDetermineValueToPay {
                 "3518935478", new Vehicles("KYC-862", PUBLIC, new ServicePackage[]{INTERIOR_WASH})));
         
         Sale sale9 = new Sale(new Users("Luis Perez", 
-                "3109453217", new Vehicles("DLE-999", PUBLIC, new ServicePackage[]{INTERIOR_WASH})));
+                "3109453217", new Vehicles("DLE-999", PUBLIC, new ServicePackage[]{EXTERIOR_WASH})));
         
         Sale sale10 = new Sale(new Users("Edwin Vargas", 
                 "3158963145", new Vehicles("MSX-409", PUBLIC, new ServicePackage[]{ENGINE_WASH})));
@@ -71,7 +71,7 @@ public class TestDetermineValueToPay {
         
         System.out.println("CASO #8:" + (sale8.determineValueToPay()==8000? "OK":"ERROR"));
         
-        System.out.println("CASO #9:" + (sale9.determineValueToPay()==8000? "OK":"ERROR"));
+        System.out.println("CASO #9:" + (sale9.determineValueToPay()==12000? "OK":"ERROR"));
         
         System.out.println("CASO #10:" + (sale10.determineValueToPay()==10000? "OK":"ERROR"));
     }

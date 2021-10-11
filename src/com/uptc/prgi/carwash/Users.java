@@ -36,7 +36,7 @@ public class Users {
 
     @Override
     public String toString() {
-        return  "Nombre -> " + name + ", Número de telefono -> " + PhoneNumber + "\n, Vehiculo : " + vehicles + '}';
+        return  "Nombre -> " + name + ", Número de telefono -> " + PhoneNumber + "\n     Vehiculo: " + vehicles;
     }
     
     
