@@ -131,7 +131,7 @@ public class TestMain {
         System.out.println("Ingrese el numero del usuario");
         String number = console.nextLine();
         System.out.println("Ingrese la placa del vehiculo");
-        String licencePlaque = console.nextLine();
+        String licencePlaque = console.nextLine().intern();
         System.out.println("Digite el Tipo de vehiculo ( PUBLIC o PARTICULAR)");
         TypeVehicle tipeVehicle = null;
         try{
