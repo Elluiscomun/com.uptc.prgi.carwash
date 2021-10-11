@@ -33,8 +33,8 @@ public enum ServicePackage {
 
     @Override
     public String toString() {
-        return "\nTipo de Servicio=" + typeOfService + ", Valor Del Servicio=" + priceOfService ;
-    }
-    
+        return "Tipo de Servicio: " + typeOfService + ", Valor Del Servicio: " + priceOfService;
+    } 
     
 }
+
