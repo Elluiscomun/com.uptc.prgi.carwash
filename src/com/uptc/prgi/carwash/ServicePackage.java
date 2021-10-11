@@ -30,4 +30,11 @@ public enum ServicePackage {
     public int getPriceOfService(){
         return this.priceOfService;
     }
+
+    @Override
+    public String toString() {
+        return "\nTipo de Servicio=" + typeOfService + ", Valor Del Servicio=" + priceOfService + '}';
+    }
+    
+    
 }
