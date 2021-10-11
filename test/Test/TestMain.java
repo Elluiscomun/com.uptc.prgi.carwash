@@ -41,10 +41,10 @@ public class TestMain {
         createTestData(); //para efectos de prueba ejecutamos un metodo que nos entrega dostos quemados
         int option = 0;
         do {
-<<<<<<< HEAD
+
             String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte General de ventas\n4.Generar detallado de ventas\n5.SALIR";
             System.out.println(menu);
-=======
+
             String banner =    "____________________________________________________________________________\n" +
                                " __________________________________________________________________________\n" +
                                "|                                __________               [ManagerCarWash®]|\n" +
@@ -72,7 +72,7 @@ public class TestMain {
             String format1 = " __________________________________________________________________________ ";
             String format2 = "|__________________________________________________________________________|";
             
->>>>>>> c8c1bc1ba908c708142542a0f01d17d830128c72
+
             console = new Scanner(System.in);
             try{
                 System.out.println(formatOption);
@@ -107,12 +107,9 @@ public class TestMain {
                         break;
                     }    
                     break;
-<<<<<<< HEAD
-=======
                 case 5:
                     System.out.println("El programa se ha cerrado exitosamente...");
                     break;
->>>>>>> c8c1bc1ba908c708142542a0f01d17d830128c72
 		default:
                     System.out.println("Seleccione una opcion correcta");
                     break;
@@ -172,7 +169,7 @@ public class TestMain {
     }
     
     /**
-     * Nos permite
+     * Nos permite visualizar los datos retornados
      * @param sales 
      */
     public void show(SalesReport sales){
@@ -180,12 +177,15 @@ public class TestMain {
             for(int i = 0; i < sales.getDatas().length; i++){
                 System.out.println(sales.getDatas()[i]);
             }
-            System.out.println("Fin de Busqueda");
+            System.out.println("Fin de Busqueda"); //Informa el cuando ya se presentaron por pantalla todos los resultados
         }else{
-            System.out.println("No se encontraron resultados con el parametro propuesto");
+            System.out.println("No se encontraron resultados con el parametro propuesto");//Informa si el arreglo entregado esta vacio
         }    
     }
     
+    /**
+     * Metodo que permite crear una nueva venta
+     */
     public void createNewSale(){
         String formatOption = "____________________________________________________________________________";
         String format1 = " __________________________________________________________________________ ";
@@ -213,24 +213,31 @@ public class TestMain {
         System.out.println("Digite cuantos servicios va a adquirir el usuario");
         ServicePackage[] servicePakage = createServicePackageArray(Integer.parseInt(console.nextLine()));
 
-        Sale newSale = new Sale(new Users(name,number, new Vehicles(licencePlaque, tipeVehicle, servicePakage)));
-        createNewSalesReport(newSale);
+        Sale newSale = new Sale(new Users(name,number, new Vehicles(licencePlaque, tipeVehicle, servicePakage))); //creamos una nueva venta nos los datos digitamos manualmente
+        createNewSalesReport(newSale);//Añade la nueva venta al array principal
         System.out.println("La venta se creo exitosamente \nTotal venta : $"+ newSale.getValue() 
                 + (newSale.determinePromotion()?"\nAhorro 10%":"") 
                 + (newSale.determineAirFresher()?"\nLleva Gratis Ambientador":""));
     }
     
+    /**
+     * Metodo que añade una nueva venta al array principal
+     * @param sale 
+     */
     public void createNewSalesReport(Sale sale){
         int i = 0;
-        Sale[] sales = new Sale[salesReport2.getDatas().length+1];
+        Sale[] sales = new Sale[salesReport2.getDatas().length+1];//creamos un nuevo array con un espacion de más en comparacion con el array principal
         while(i < sales.length-1){
-            sales[i] = (Sale) salesReport2.getDatas()[i];
+            sales[i] = (Sale) salesReport2.getDatas()[i]; //le añadimos todos objetos del array principal
             i++;
         }
-        sales[i] = sale;
-        salesReport2 = new SalesReport(sales);
+        sales[i] = sale; // Y en el ultimo espacio añadimos la nueva venta creada
+        salesReport2 = new SalesReport(sales); //sabre escribimos el array principal para que contenga la nueva venta
     }
     
+    /**
+     * Creamos datos quemados 
+     */
     public void createTestData() {
         Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -265,12 +272,17 @@ public class TestMain {
         salesReport2 = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale6,sale7,sale8,sale9,sale10});
     }
     
+    /**
+     * Creacion de arrays del enumerado ServicePackage
+     * @param numberlength
+     * @return 
+     */
     public ServicePackage[] createServicePackageArray(int numberlength){
         ServicePackage[] servicePackage = new ServicePackage[numberlength];
-        if(numberlength==3){
+        if(numberlength==3){ //si el usuario desea adquirir 3 servicios se retorna un array con todos nos servicios de la clase enum
             servicePackage = ServicePackage.values();
         }else{
-            for(int i = 0;i < servicePackage.length;i++){
+            for(int i = 0;i < servicePackage.length;i++){ //Mediante los numeros ingresados manualmente recuperamos la ubicacion de los datos del enum
                 System.out.println("SERVICIO " + (i+1) + "\nMarque 1 si el usuario va a adquirir "+ ServicePackage.ENGINE_WASH.getTypeOfService() 
                     + "\n Marque 2 Si el usuario va a adquirir "+ServicePackage.EXTERIOR_WASH.getTypeOfService() 
                     + "\n Marque 3 Si el usuario va a adquirir "+ServicePackage.INTERIOR_WASH.getTypeOfService());

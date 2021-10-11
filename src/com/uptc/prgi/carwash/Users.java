@@ -36,11 +36,8 @@ public class Users {
 
     @Override
     public String toString() {
-<<<<<<< HEAD
         return  "Nombre=" + name + ", Número de telefono=" + PhoneNumber + "\nVehiculo : " + vehicles ;
-=======
-        return  "Nombre -> " + name + ", Número de telefono -> " + PhoneNumber + "\n, Vehiculo : " + vehicles + '}';
->>>>>>> c8c1bc1ba908c708142542a0f01d17d830128c72
+
     }
     
     
