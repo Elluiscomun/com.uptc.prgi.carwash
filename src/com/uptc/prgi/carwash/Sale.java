@@ -87,7 +87,7 @@ public class Sale{
     
     @Override
     public String toString() {
-        return "Sale{" + "user=" + user + ", date=" + date + ", value=" + value + '}';
+        return "Venta{" + "Usuario : " + user + ", date=" + date + ", value=" + value + '}';
     }
     
 }
