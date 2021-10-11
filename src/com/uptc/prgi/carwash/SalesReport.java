@@ -17,8 +17,7 @@ import java.util.Date;
 public class SalesReport<T> {
 
     private T[] datas;
-    
-
+   
     public SalesReport(T[] datas){
         this.datas = datas;
     }
@@ -32,6 +31,7 @@ public class SalesReport<T> {
         this.datas[j]=this.datas[i];    
         this.datas[i]=aux;
     }
+    
     
     public SalesReport<T> bubbleSort(Comparator<T> comparator) {
         SalesReport<T> result = new SalesReport(datas);
@@ -48,9 +48,11 @@ public class SalesReport<T> {
         return result;
     }
     
+    
     public void sortByValue(){
         bubbleSort(comparatorByValue());
     }
+    
     
     public Comparator comparatorByValue(){
         Comparator<Sale> comparator = new Comparator<Sale>() {
@@ -62,6 +64,7 @@ public class SalesReport<T> {
         return comparator;
     }
     
+    
     public int count(ISalesReport<T> iSalesReport){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
@@ -72,6 +75,7 @@ public class SalesReport<T> {
         return count;
     }
     
+    
     public int countValue(IValue<T> iValue){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
@@ -79,6 +83,7 @@ public class SalesReport<T> {
         }
         return count;
     }
+    
     
     public SalesReport<T> search(ISalesReport<T> iSalesReport){
         T[] result = (T[]) new Object[count(iSalesReport)];
@@ -92,6 +97,7 @@ public class SalesReport<T> {
         return new SalesReport<>(result);
     }
    
+    
     public ISalesReport<Sale> conditionByLicensePlate(String value){
         return new ISalesReport<Sale>(){
             @Override
@@ -101,6 +107,7 @@ public class SalesReport<T> {
         
         };
     }
+    
     
     public ISalesReport<Sale> conditionByDate(Date value){
         return new ISalesReport<Sale>(){
@@ -114,6 +121,7 @@ public class SalesReport<T> {
         };
     }
     
+    
     public ISalesReport<Sale> conditionByMount(Date value){
         return new ISalesReport<Sale>(){
             @Override
@@ -125,6 +133,7 @@ public class SalesReport<T> {
         };
     }
     
+    
     public ISalesReport<Sale> conditionByYear(Date value){
         return new ISalesReport<Sale>(){
             @Override
@@ -134,6 +143,7 @@ public class SalesReport<T> {
         
         };
     }
+    
     
     public ISalesReport<Sale> conditionByCountServices(int value){
         return new ISalesReport<Sale>(){
@@ -145,6 +155,7 @@ public class SalesReport<T> {
         };
     }
     
+    
     public ISalesReport<Sale> conditionByCountAirFresher(){
         return new ISalesReport<Sale>(){
             @Override
@@ -154,6 +165,7 @@ public class SalesReport<T> {
         
         };
     }
+    
     
     public IValue<Sale> contitionByValue(){
         return new IValue<Sale>(){
@@ -166,22 +178,39 @@ public class SalesReport<T> {
     }
     
     
-    
+    /**
+     * Realizar una busqueda en base a los datos registrados para poder encontrar coincidencias con la
+     * placa del vehiculo que se ingreso...
+     * @param condition Cadena de caracteres --> Placa de un vehiculo...
+     * @return Datos correspondientes al usuario vinculado a aquel vehiculo... 
+     */
     public SalesReport searchByLicensePlate(String condition){
         return  search((ISalesReport<T>) conditionByLicensePlate(condition));
     }
     
+    /**
+     * Determinar la cantidad de veces que se ha utilizado cada servicio... 
+     * @param condition Tipo de Servicio...
+     * @return Contador de utilizacion del servicio...
+     */
     public int countServices(int condition){
         return  count((ISalesReport<T>) conditionByCountServices(condition));
     }
     
+    /**
+     * Determinar la cantidad de veces que se ha entregado de obsequio un ambientador... 
+     * @return Contador de ambientadores obsequiados...
+     */
     public int countAirFresher(){
         return  count((ISalesReport<T>) conditionByCountAirFresher());
     }
     
-
-    
-    
+    /**
+     * Realizar una busqueda en base a los datos registrados para poder 
+     * encontrar coincidencias de acuerdo a la fecha ingresada...
+     * @param condition
+     * @return 
+     */
     public SalesReport searchByDate(Date condition){
         return  search((ISalesReport<T>) conditionByDate(condition));
     }

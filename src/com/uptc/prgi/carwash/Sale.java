@@ -51,7 +51,7 @@ public class Sale{
     /**
      * Determinar si el usuario aplica a la promocion/descuento del valor total a pagar si adquiere 
      * los tres servicios que ofrece el lavadero de autos "Car Wash"...
-     * @return boolean
+     * @return boolean True-->Si aplica a la promocion/descuento...
      */
     public boolean determinePromotion(){
         return user.getVehicles().getServicePackage().length==3;
@@ -61,7 +61,7 @@ public class Sale{
     /**
      * Determinar que si el vehiculo es de tipo PÚBLICO, por lo que si lo anterior resulta 
      * ser verdadero el usuario aplica para recibir un ambientador de obsequio...
-     * @return 
+     * @return boolean-->Si aplica al obsequio del ambientador...
      */
     public boolean determineAirFresher(){
         return user.getVehicles().getTypeVehicle() == PUBLIC;

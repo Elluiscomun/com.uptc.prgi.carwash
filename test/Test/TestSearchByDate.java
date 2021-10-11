@@ -16,14 +16,15 @@ import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  *
  * @author Edwin Niño
  */
-public class TestSearchByLicensePlate {
-    
-    public void testsSearchByLicensePlate(){
+public class TestSearchByDate {
+
+    public void testsSearchByDate(){
         
         Sale sale1 = new Sale(new Users("Niko Bellic", 
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
@@ -58,25 +59,20 @@ public class TestSearchByLicensePlate {
         SalesReport salesReport = new SalesReport(new Sale[]{sale1,sale2,sale3,sale4,sale5,sale6,sale7,sale8,sale9,sale10});
         
         
-        System.out.println("CASOS DE PRUEBA: BUSQUEDA MEDIANTE LA PLACA DEL VEHICULO...");
-        System.out.println("CASO #1:" + (Arrays.equals(salesReport.searchByLicensePlate("KYC-862").getDatas(),(new Sale[]{sale8}))?" OK ":" ERROR "));
+        System.out.println("CASOS DE PRUEBA: BUSQUEDA MEDIANTE UNA FECHA...");
+        System.out.println("CASO #1:" + (salesReport.searchByDate(new Date("2021/10/10"))));
+        System.out.println("CASO #1:" + (Arrays.equals(salesReport.searchByDate(new Date("2021/10/10")).getDatas(),(new Sale[]{sale1}))?" OK ":" ERROR "));
         
-        System.out.println("CASO #2:" + (Arrays.equals(salesReport.searchByLicensePlate("MSX-409").getDatas(),(new Sale[]{sale10}))?" OK ":" ERROR "));
-        
-        System.out.println("CASO #3:" + (Arrays.equals(salesReport.searchByLicensePlate("HIO-978").getDatas(),(new Sale[]{sale5}))?" OK ":" ERROR "));
-        
-        System.out.println("CASO #4:" + (Arrays.equals(salesReport.searchByLicensePlate("NPL-329").getDatas(),(new Sale[]{sale2}))?" OK ":" ERROR "));
-        
-        System.out.println("CASO #5:" + (Arrays.equals(salesReport.searchByLicensePlate("WEE-086").getDatas(),(new Sale[]{sale7}))?" OK ":" ERROR "));
-        
+       
+          
+        //Sun Oct 10 00:00:00 COT 2021
     }
         
         
     public static void main(String[] args) {
         
-        TestSearchByLicensePlate testSearchByLicensePlate = new TestSearchByLicensePlate();
-        testSearchByLicensePlate.testsSearchByLicensePlate();
-        
+        TestSearchByDate testSearchByDate = new TestSearchByDate();
+        testSearchByDate.testsSearchByDate();
     }
     
 }
