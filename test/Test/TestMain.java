@@ -34,14 +34,14 @@ public class TestMain {
     private Sale sale;
     
     public TestMain(){
-        run();
+        run();//Siempre que se cree esta clase se ejecuta inicialmete el metodo run() que contiene nuestro menu
     }
     
     public void run() {
-        createTestData();
+        createTestData(); //para efectos de prueba ejecutamos un metodo que nos entrega dostos quemados
         int option = 0;
         do {
-            String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte de ventas";
+            String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte General de ventas\n4.Generar detallado de ventas\n5.SALIR";
             System.out.println(menu);
             console = new Scanner(System.in);
             try{
@@ -60,20 +60,28 @@ public class TestMain {
 		case 3:
                     System.out.println("1.Generar por Día\n2.Generar por mes\n3.Generar por año");
                     try{
-                        menuGenerateReport(Integer.parseInt(console.nextLine()));
+                        menuGenerateReport(Integer.parseInt(console.nextLine()),1);
                     }catch(NumberFormatException x){
                         break;
                     }    
-                    break;			
+                    break;
+                case 4:
+                    System.out.println("1.Generar por Día\n2.Generar por mes\n3.Generar por año");
+                    try{
+                        menuGenerateReport(Integer.parseInt(console.nextLine()),2);
+                    }catch(NumberFormatException x){
+                        break;
+                    }    
+                    break;
 		default:
                     System.out.println("Seleccione una opcion correcta");
                     break;
             }
-        }while(option != 10);
+        }while(option != 5);
     
     } 
     
-    public void menuGenerateReport(int option){
+    public void menuGenerateReport(int option, int version){
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy");
@@ -87,7 +95,9 @@ public class TestMain {
                         System.out.println("Fecha erronea");
                         break;
                     }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByDate(date)));
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByDate(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByDate(date))) );
                     break;
 		case 2:
                     System.out.println("Digite la fecha a consultar con el formato : yyyy/MM");
@@ -96,8 +106,10 @@ public class TestMain {
                     }catch(ParseException x){
                         System.out.println("Fecha erronea");
                         break;
-                    }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByMount(date)));
+                    }
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByMount(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByMount(date))) );
                     break;
 		case 3:
                     System.out.println("Digite la fecha a consultar con el formato : yyyy");
@@ -106,8 +118,10 @@ public class TestMain {
                     }catch(ParseException x){
                         System.out.println("Fecha erronea");
                         break;
-                    }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByYear(date)));
+                    }
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByYear(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByYear(date))) );
                     break;			
 		default:
                     System.out.println("Seleccione una opcion correcta");
@@ -117,11 +131,19 @@ public class TestMain {
     
     }
     
+    /**
+     * Nos permite
+     * @param sales 
+     */
     public void show(SalesReport sales){
-        for(int i = 0; i < sales.getDatas().length; i++){
-            System.out.println(sales.getDatas()[i]);
-        }
-        System.out.println("Fin de Busqueda");
+        if(sales.getDatas().length > 0){
+            for(int i = 0; i < sales.getDatas().length; i++){
+                System.out.println(sales.getDatas()[i]);
+            }
+            System.out.println("Fin de Busqueda");
+        }else{
+            System.out.println("No se encontraron resultados con el parametro propuesto");
+        }    
     }
     
     public void createNewSale(){

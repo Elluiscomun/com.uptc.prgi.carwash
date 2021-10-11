@@ -32,7 +32,11 @@ public class SalesReport<T> {
         this.datas[i]=aux;
     }
     
-    
+    /**
+     * Mediante un comparador organiza 
+     * @param comparator
+     * @return 
+     */
     public SalesReport<T> bubbleSort(Comparator<T> comparator) {
         SalesReport<T> result = new SalesReport(datas);
         boolean change = true;
@@ -48,7 +52,9 @@ public class SalesReport<T> {
         return result;
     }
     
-    
+    /**
+     * Mediante un comparador por valores llama al metodo de organizar
+     */
     public void sortByValue(){
         bubbleSort(comparatorByValue());
     }
@@ -64,7 +70,11 @@ public class SalesReport<T> {
         return comparator;
     }
     
-    
+    /**
+     * Cuenta cuantas veces se cumple una condicion
+     * @param iSalesReport
+     * @return 
+     */
     public int count(ISalesReport<T> iSalesReport){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
@@ -76,6 +86,11 @@ public class SalesReport<T> {
     }
     
     
+    /**
+     * Mediante una condicion calcula la suma de todos los valores individuales contenidos cada objeto de un arreglo
+     * @param iValue
+     * @return 
+     */
     public int countValue(IValue<T> iValue){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
@@ -84,7 +99,11 @@ public class SalesReport<T> {
         return count;
     }
     
-    
+    /**
+     * Permite realizar la busqueda de un objeto
+     * @param iSalesReport
+     * @return 
+     */
     public SalesReport<T> search(ISalesReport<T> iSalesReport){
         T[] result = (T[]) new Object[count(iSalesReport)];
         int founds = 0;
@@ -215,17 +234,39 @@ public class SalesReport<T> {
         return  search((ISalesReport<T>) conditionByDate(condition));
     }
     
+    /**
+     * Genera un reporte detallado de ventas
+     * @param iSalesReport
+     * @return 
+     */
+    public String createDetailSalesReport(ISalesReport iSalesReport){
+        String reportText = "";
+        SalesReport salesReport = search(iSalesReport); //Hace una busqueda segun parametro ingresado
+        salesReport.sortByValue(); //Organilla desde las ventas que generaron más ganancias
+        String countTotal = "Cantidad Total de ventas : "+ salesReport.getDatas().length +"\n"; 
+        for(Object saleReport:salesReport.getDatas()){
+            reportText += saleReport + "\n"; // con un salto de linea va concatenando los objetos encontrados
+        }
+        
+        return reportText;
+    }
+    
+    /**
+     * Genera reporte general
+     * @param iSalesReport
+     * @return 
+     */
     public String createSalesReport(ISalesReport iSalesReport){
-        SalesReport salesReport = search(iSalesReport);   
-        String stringDate = "REPORTE POR PERIODO DE TIEMPO DIGITADO :  " + "\n";
+        SalesReport salesReport = search(iSalesReport);  //Realiza busqueda de objetos por un parametro establecido 
+        String stringDate = "REPORTE POR PERIODO DE TIEMPO DIGITADO :  " + "\n"; 
         String stringByServices = "Cantidad de ventas con tres servicos : " + salesReport.countServices(3) + "\n" 
                 + "Cantidad de ventas con dos servicos : " + salesReport.countServices(2) + "\n"
                 + "Cantidad de ventas con un servico : " + salesReport.countServices(1) + "\n"
                 + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.countAirFresher() + "\n";
-        String countTotal = "Total cantidad de ventas : "+ salesReport.getDatas().length +"\n";
+        String countTotal = "Cantidad Total de ventas : "+ salesReport.getDatas().length +"\n";
         String totalValue = "Total recaudado : " + salesReport.countValue(contitionByValue()); 
         
-        return stringDate + stringByServices + countTotal + totalValue;
+        return stringDate + stringByServices + countTotal + totalValue; //concatena las llamadas a metodos realizadas y el total de cadenas de texto creadas
     }
     
    
