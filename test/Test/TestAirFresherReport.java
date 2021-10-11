@@ -28,7 +28,7 @@ public class TestAirFresherReport {
                 "3142859831", new Vehicles("UVD-200", PUBLIC, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH})));
         
         Sale sale2 = new Sale(new Users("Armando Lios", 
-                "321598310099", new Vehicles("NPL-329", PUBLIC, new ServicePackage[]{INTERIOR_WASH})));
+                "3215983100", new Vehicles("NPL-329", PUBLIC, new ServicePackage[]{INTERIOR_WASH})));
         
         Sale sale3 = new Sale(new Users("Alex Moreno", 
                 "3190031043", new Vehicles("KKD-100", PARTICULAR, new ServicePackage[]{INTERIOR_WASH, EXTERIOR_WASH, ENGINE_WASH})));
