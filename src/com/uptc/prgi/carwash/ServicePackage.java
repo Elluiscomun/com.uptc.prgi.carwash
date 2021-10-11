@@ -10,7 +10,9 @@ package com.uptc.prgi.carwash;
  * @author luism
  */
 public enum ServicePackage {
-    INTERIOR_WASH("Lavado Interior", 8000), EXTERIOR_WASH("Lavado Exterior", 12000), ENGINE_WASH("Lavado de Motor", 10000) ;
+    INTERIOR_WASH("Lavado Interior", 8000), 
+    EXTERIOR_WASH("Lavado Exterior", 12000), 
+    ENGINE_WASH("Lavado de Motor", 10000);
     
     private final String typeOfService;
     private final int priceOfService;
