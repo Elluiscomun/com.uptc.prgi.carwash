@@ -61,8 +61,8 @@ public class TestSearchByDate {
         
         System.out.println("CASOS DE PRUEBA: BUSQUEDA MEDIANTE UNA FECHA...");
         System.out.println("CASO #1:" + (salesReport.searchByDate(new Date("2021/10/10"))));
-        System.out.println("CASO #1:" + (Arrays.equals(salesReport.searchByDate(new Date("2021/10/10")).getDatas(),(new Sale[]{sale1}))?" OK ":" ERROR "));
-        
+        System.out.println("CASO #1:" + (Arrays.equals(salesReport.searchByDate(new Date("2021/Oct/10")).getDatas(),(new Sale[]{sale1}))?" OK ":" ERROR "));
+        System.out.println(sale1);
        
           
         //Sun Oct 10 00:00:00 COT 2021
