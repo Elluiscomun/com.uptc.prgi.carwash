@@ -242,12 +242,12 @@ public class SalesReport<T> {
         String reportText = "";
         SalesReport salesReport = search(iSalesReport); //Hace una busqueda segun parametro ingresado
         salesReport.sortByValue(); //Organilla desde las ventas que generaron más ganancias
-        String countTotal = "Cantidad Total de ventas : "+ salesReport.getDatas().length +"\n"; 
+        String countTotal = "Cantidad Total de ventas : "+ salesReport.getDatas().length +"\n"+"\n"; 
         for(Object saleReport:salesReport.getDatas()){
             reportText += saleReport + "\n"; // con un salto de linea va concatenando los objetos encontrados
         }
         
-        return reportText;
+        return countTotal + reportText;
     }
     
     /**
