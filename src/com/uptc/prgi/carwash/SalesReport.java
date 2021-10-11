@@ -75,7 +75,7 @@ public class SalesReport<T> {
     public int countValue(IValue<T> iValue){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
-            count = iValue.isInto(datas[i]);
+            count += iValue.isInto(datas[i]);
         }
         return count;
     }
@@ -192,10 +192,11 @@ public class SalesReport<T> {
         String stringByServices = "Cantidad de ventas con tres servicos : " + salesReport.countServices(3) + "\n" 
                 + "Cantidad de ventas con dos servicos : " + salesReport.countServices(2) + "\n"
                 + "Cantidad de ventas con un servico : " + salesReport.countServices(1) + "\n"
-                + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.conditionByCountAirFresher() + "\n";
+                + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.countAirFresher() + "\n";
+        String countTotal = "Total cantidad de ventas : "+ salesReport.getDatas().length +"\n";
         String totalValue = "Total recaudado : " + salesReport.countValue(contitionByValue()); 
         
-        return stringDate + stringByServices + totalValue;
+        return stringDate + stringByServices + countTotal + totalValue;
     }
     
    
