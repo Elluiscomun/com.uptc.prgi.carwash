@@ -41,11 +41,43 @@ public class TestMain {
         createTestData(); //para efectos de prueba ejecutamos un metodo que nos entrega dostos quemados
         int option = 0;
         do {
+<<<<<<< HEAD
             String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte General de ventas\n4.Generar detallado de ventas\n5.SALIR";
             System.out.println(menu);
+=======
+            String banner =    "____________________________________________________________________________\n" +
+                               " __________________________________________________________________________\n" +
+                               "|                                __________               [ManagerCarWash®]|\n" +
+                               "|------------------------------ | CAR-WASH | ------------------------------|\n" +
+                               "|__________________________________________________________________________|\n" +
+                               "____________________________________________________________________________";
+            System.out.println(banner);
+            
+            
+       
+            String mainMenu =  " __________________________________________________________________________\n" +
+                               "|                             ________________                             |\n" +
+                               "|--------------------------- | MENÚ PRINCIPAL | ---------------------------|\n" +
+                               "|__________________________________________________________________________|\n" +
+                               "|            ***** INGRESE EL NUMERO DE LA OPCION A ESCOGER: *****         |\n" +
+                               " --------------------------------------------------------------------------\n" +
+                               "|                [--->] 1. Registrar una nueva venta----->(1)              |\n" +
+                               "|                [--->] 2. Consultar datos de venta------>(2)              |\n" +
+                               "|                [--->] 3. Generar reporte de ventas----->(3)              |\n" +
+                               "|                [--->] 4. Cerrar el programa------------>(4)              |\n" +
+                               "|__________________________________________________________________________|";
+            System.out.println(mainMenu);
+            
+            String formatOption = "____________________________________________________________________________";
+            String format1 = " __________________________________________________________________________ ";
+            String format2 = "|__________________________________________________________________________|";
+            
+>>>>>>> c8c1bc1ba908c708142542a0f01d17d830128c72
             console = new Scanner(System.in);
             try{
+                System.out.println(formatOption);
                 option = Integer.parseInt(console.nextLine());
+                System.out.println(formatOption);
             }catch(NumberFormatException x){
                 
             }    
@@ -54,7 +86,9 @@ public class TestMain {
                     createNewSale();
                     break;
 		case 2:
-                    System.out.println("Ingrese Placa Del Vehiculo");
+                    System.out.println(format1);
+                    System.out.println("| Ingrese La Placa Del Vehiculo...                                         |");
+                    System.out.println(formatOption);
                     show( salesReport2.searchByLicensePlate(console.nextLine().intern()));
                     break;
 		case 3:
@@ -73,6 +107,12 @@ public class TestMain {
                         break;
                     }    
                     break;
+<<<<<<< HEAD
+=======
+                case 5:
+                    System.out.println("El programa se ha cerrado exitosamente...");
+                    break;
+>>>>>>> c8c1bc1ba908c708142542a0f01d17d830128c72
 		default:
                     System.out.println("Seleccione una opcion correcta");
                     break;
@@ -147,13 +187,16 @@ public class TestMain {
     }
     
     public void createNewSale(){
-        
+        String formatOption = "____________________________________________________________________________";
+        String format1 = " __________________________________________________________________________ ";
+        String format2 = "|__________________________________________________________________________|";
+        System.out.println(format1);
         System.out.println("Ingrese el nombre del usuario");
         String name = console.nextLine();
         System.out.println("Ingrese el numero del usuario");
         String number = console.nextLine();
         System.out.println("Ingrese la placa del vehiculo");
-        String licencePlaque = console.nextLine();
+        String licencePlaque = console.nextLine().intern();
         System.out.println("Digite el Tipo de vehiculo ( PUBLIC o PARTICULAR)");
         TypeVehicle tipeVehicle = null;
         try{
