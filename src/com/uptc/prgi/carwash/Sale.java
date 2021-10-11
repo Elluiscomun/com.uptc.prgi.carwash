@@ -6,11 +6,9 @@
 
 package com.uptc.prgi.carwash;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -99,3 +97,4 @@ public class Sale{
     }
     
 }
+
