@@ -41,11 +41,38 @@ public class TestMain {
         createTestData();
         int option = 0;
         do {
-            String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte de ventas";
-            System.out.println(menu);
+            String banner =    "____________________________________________________________________________\n" +
+                               " __________________________________________________________________________\n" +
+                               "|                                __________               [ManagerCarWash®]|\n" +
+                               "|------------------------------ | CAR-WASH | ------------------------------|\n" +
+                               "|__________________________________________________________________________|\n" +
+                               "____________________________________________________________________________";
+            System.out.println(banner);
+            
+            
+       
+            String mainMenu =  " __________________________________________________________________________\n" +
+                               "|                             ________________                             |\n" +
+                               "|--------------------------- | MENÚ PRINCIPAL | ---------------------------|\n" +
+                               "|__________________________________________________________________________|\n" +
+                               "|            ***** INGRESE EL NUMERO DE LA OPCION A ESCOGER: *****         |\n" +
+                               " --------------------------------------------------------------------------\n" +
+                               "|                [--->] 1. Registrar una nueva venta----->(1)              |\n" +
+                               "|                [--->] 2. Consultar datos de venta------>(2)              |\n" +
+                               "|                [--->] 3. Generar reporte de ventas----->(3)              |\n" +
+                               "|                [--->] 4. Cerrar el programa------------>(4)              |\n" +
+                               "|__________________________________________________________________________|";
+            System.out.println(mainMenu);
+            
+            String formatOption = "____________________________________________________________________________";
+            String format1 = " __________________________________________________________________________ ";
+            String format2 = "|__________________________________________________________________________|";
+            
             console = new Scanner(System.in);
             try{
+                System.out.println(formatOption);
                 option = Integer.parseInt(console.nextLine());
+                System.out.println(formatOption);
             }catch(NumberFormatException x){
                 
             }    
@@ -54,7 +81,9 @@ public class TestMain {
                     createNewSale();
                     break;
 		case 2:
-                    System.out.println("Ingrese Placa Del Vehiculo");
+                    System.out.println(format1);
+                    System.out.println("| Ingrese La Placa Del Vehiculo...                                         |");
+                    System.out.println(formatOption);
                     show( salesReport2.searchByLicensePlate(console.nextLine().intern()));
                     break;
 		case 3:
@@ -64,16 +93,27 @@ public class TestMain {
                     }catch(NumberFormatException x){
                         break;
                     }    
-                    break;			
+                    break;
+                case 4:
+                    System.out.println("1.Generar por Día\n2.Generar por mes\n3.Generar por año");
+                    try{
+                        menuGenerateReport(Integer.parseInt(console.nextLine()),2);
+                    }catch(NumberFormatException x){
+                        break;
+                    }    
+                    break;
+                case 5:
+                    System.out.println("El programa se ha cerrado exitosamente...");
+                    break;
 		default:
                     System.out.println("Seleccione una opcion correcta");
                     break;
             }
-        }while(option != 10);
+        }while(option != 5);
     
     } 
     
-    public void menuGenerateReport(int option){
+    public void menuGenerateReport(int option, int version){
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
         SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM");
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy");
@@ -87,7 +127,9 @@ public class TestMain {
                         System.out.println("Fecha erronea");
                         break;
                     }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByDate(date)));
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByDate(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByDate(date))) );
                     break;
 		case 2:
                     System.out.println("Digite la fecha a consultar con el formato : yyyy/MM");
@@ -96,8 +138,10 @@ public class TestMain {
                     }catch(ParseException x){
                         System.out.println("Fecha erronea");
                         break;
-                    }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByMount(date)));
+                    }
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByMount(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByMount(date))) );
                     break;
 		case 3:
                     System.out.println("Digite la fecha a consultar con el formato : yyyy");
@@ -106,8 +150,10 @@ public class TestMain {
                     }catch(ParseException x){
                         System.out.println("Fecha erronea");
                         break;
-                    }    
-                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByYear(date)));
+                    }
+                    System.out.println( (version==1?salesReport2.createSalesReport
+                            (salesReport2.conditionByYear(date)):
+                            salesReport2.createDetailSalesReport(salesReport2.conditionByYear(date))) );
                     break;			
 		default:
                     System.out.println("Seleccione una opcion correcta");
@@ -125,7 +171,10 @@ public class TestMain {
     }
     
     public void createNewSale(){
-        
+        String formatOption = "____________________________________________________________________________";
+        String format1 = " __________________________________________________________________________ ";
+        String format2 = "|__________________________________________________________________________|";
+        System.out.println(format1);
         System.out.println("Ingrese el nombre del usuario");
         String name = console.nextLine();
         System.out.println("Ingrese el numero del usuario");

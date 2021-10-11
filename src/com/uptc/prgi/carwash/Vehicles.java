@@ -6,6 +6,8 @@
 
 package com.uptc.prgi.carwash;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Luis Miguel Santiago 202023610
@@ -37,7 +39,7 @@ public class Vehicles {
 
     @Override
     public String toString() {
-        return "Placa=" + licensePlate + ", Tipo de Vehiculo=" + typeVehicle + ", Servicos : " + servicePackage + '}';
+        return "Placa=" + licensePlate + ", Tipo de Vehiculo=" + typeVehicle + ", Servicios : " + Arrays.toString(servicePackage) + '}';
     }
     
     

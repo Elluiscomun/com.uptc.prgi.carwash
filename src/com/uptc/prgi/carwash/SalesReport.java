@@ -177,6 +177,17 @@ public class SalesReport<T> {
         };
     }
     
+    public String createDetailSalesReport(ISalesReport iSalesReport){
+        String reportText = "";
+        SalesReport salesReport = search(iSalesReport);
+        salesReport.sortByValue();
+        String countTotal = "Cantidad Total de ventas : "+ salesReport.getDatas().length +"\n";
+        for(Object saleReport:salesReport.getDatas()){
+            reportText += saleReport + "\n";
+        }
+        
+        return reportText;
+    }
     
     /**
      * Realizar una busqueda en base a los datos registrados para poder encontrar coincidencias con la
