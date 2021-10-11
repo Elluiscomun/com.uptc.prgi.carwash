@@ -39,8 +39,7 @@ public class Vehicles {
 
     @Override
     public String toString() {
-        return "Placa=" + licensePlate + ", Tipo de Vehiculo=" + typeVehicle + "\nServicos : " + Arrays.toString(servicePackage) + "\n";
-
+        return "Placa -> " + licensePlate + ", Tipo de Vehiculo -> " + typeVehicle + "\n    Servicios:" + Arrays.toString(servicePackage);
     }
     
     
