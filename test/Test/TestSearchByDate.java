@@ -16,6 +16,7 @@ import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  *
@@ -59,7 +60,8 @@ public class TestSearchByDate {
         
         
         System.out.println("CASOS DE PRUEBA: BUSQUEDA MEDIANTE UNA FECHA...");
-        System.out.println("CASO #1:" + (salesReport.searchByLicensePlate("KYC-862").getData;
+        System.out.println("CASO #1:" + (salesReport.searchByDate(new Date("2021/10/10"))));
+        System.out.println("CASO #1:" + (Arrays.equals(salesReport.searchByDate(new Date("2021/10/10")).getDatas(),(new Sale[]{sale1}))?" OK ":" ERROR "));
         
        
           

@@ -69,7 +69,6 @@ public class TestSearchByLicensePlate {
         
         System.out.println("CASO #5:" + (Arrays.equals(salesReport.searchByLicensePlate("WEE-086").getDatas(),(new Sale[]{sale7}))?" OK ":" ERROR "));
         
-        System.out.println(sale1);
     }
         
         
