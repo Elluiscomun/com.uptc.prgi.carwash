@@ -17,6 +17,9 @@ import static com.uptc.prgi.carwash.TypeVehicle.PARTICULAR;
 import static com.uptc.prgi.carwash.TypeVehicle.PUBLIC;
 import com.uptc.prgi.carwash.Users;
 import com.uptc.prgi.carwash.Vehicles;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -38,7 +41,7 @@ public class TestMain {
         createTestData();
         int option = 0;
         do {
-            String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta";
+            String menu = "1.Crear Venta Nueva\n2.Consultar Datos de venta\n3.Generar Reporte de ventas";
             System.out.println(menu);
             console = new Scanner(System.in);
             try{
@@ -52,15 +55,65 @@ public class TestMain {
                     break;
 		case 2:
                     System.out.println("Ingrese Placa Del Vehiculo");
-                    String plaque = console.toString();
-                    show( salesReport2.searchByLicensePlate(plaque));
+                    show( salesReport2.searchByLicensePlate(console.nextLine().intern()));
                     break;
-					
+		case 3:
+                    System.out.println("1.Generar por Día\n2.Generar por mes\n3.Generar por año");
+                    try{
+                        menuGenerateReport(Integer.parseInt(console.nextLine()));
+                    }catch(NumberFormatException x){
+                        break;
+                    }    
+                    break;			
 		default:
                     System.out.println("Seleccione una opcion correcta");
                     break;
             }
         }while(option != 10);
+    
+    } 
+    
+    public void menuGenerateReport(int option){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat format1 = new SimpleDateFormat("yyyy/MM");
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy");
+        Date date = null;
+        switch(option) {
+		case 1:
+                    System.out.println("Digite la fecha a consultar con el formato : yyyy/MM/dd");
+                    try{
+                        date = format.parse(console.nextLine().intern()); 
+                    }catch(ParseException x){
+                        System.out.println("Fecha erronea");
+                        break;
+                    }    
+                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByDate(date)));
+                    break;
+		case 2:
+                    System.out.println("Digite la fecha a consultar con el formato : yyyy/MM");
+                    try{
+                        date = format1.parse(console.nextLine().intern()); 
+                    }catch(ParseException x){
+                        System.out.println("Fecha erronea");
+                        break;
+                    }    
+                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByMount(date)));
+                    break;
+		case 3:
+                    System.out.println("Digite la fecha a consultar con el formato : yyyy");
+                    try{
+                        date = format2.parse(console.nextLine().intern()); 
+                    }catch(ParseException x){
+                        System.out.println("Fecha erronea");
+                        break;
+                    }    
+                    System.out.println(salesReport2.createSalesReport(salesReport2.conditionByYear(date)));
+                    break;			
+		default:
+                    System.out.println("Seleccione una opcion correcta");
+                    break;
+            }    
+        
     
     }
     

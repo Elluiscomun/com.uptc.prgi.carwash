@@ -79,7 +79,7 @@ public class SalesReport<T> {
     public int countValue(IValue<T> iValue){
         int count = 0;
         for (int i = 0; i < datas.length; i++) {
-            count = iValue.isInto(datas[i]);
+            count += iValue.isInto(datas[i]);
         }
         return count;
     }
@@ -218,13 +218,14 @@ public class SalesReport<T> {
     public String createSalesReport(ISalesReport iSalesReport){
         SalesReport salesReport = search(iSalesReport);   
         String stringDate = "REPORTE POR PERIODO DE TIEMPO DIGITADO :  " + "\n";
-        String stringByServices = "Cantidad de ventas con tres servicios : " + salesReport.countServices(3) + "\n" 
-                + "Cantidad de ventas con dos servicios : " + salesReport.countServices(2) + "\n"
-                + "Cantidad de ventas con un servicio : " + salesReport.countServices(1) + "\n"
-                + "Cantidad de usuarios que se les obsequio un ambientador : " + salesReport.conditionByCountAirFresher() + "\n";
-        String totalValue = "Total de Ingresos : " + salesReport.countValue(contitionByValue()); 
+        String stringByServices = "Cantidad de ventas con tres servicos : " + salesReport.countServices(3) + "\n" 
+                + "Cantidad de ventas con dos servicos : " + salesReport.countServices(2) + "\n"
+                + "Cantidad de ventas con un servico : " + salesReport.countServices(1) + "\n"
+                + "Cantidad de usuarios que llevaron Ambientador : " + salesReport.countAirFresher() + "\n";
+        String countTotal = "Total cantidad de ventas : "+ salesReport.getDatas().length +"\n";
+        String totalValue = "Total recaudado : " + salesReport.countValue(contitionByValue()); 
         
-        return stringDate + stringByServices + totalValue;
+        return stringDate + stringByServices + countTotal + totalValue;
     }
     
    
